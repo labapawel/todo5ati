@@ -1,7 +1,9 @@
 export interface Todo {
     status: number,
+    priority: number,
     name: string,
-    createDate: Date,
-    dueDate: Date,
+    description: string,
+    createDate?: Date,
+    dueDate?: Date,
     position: number
 }
