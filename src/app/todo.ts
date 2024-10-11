@@ -5,5 +5,6 @@ export interface Todo {
     description: string,
     createDate?: Date,
     dueDate?: Date,
-    position: number
+    position: number,
+    active: boolean
 }
