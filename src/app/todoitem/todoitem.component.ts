@@ -17,12 +17,14 @@ export class TodoitemComponent {
   }
   get cprimary():boolean {
     let now = new Date();
-    return this.cdark && (this.dane.dueDate !== undefined && 
-            new Date(this.dane.dueDate) > now)
+    return !this.cdark && (this.dane.dueDate !== undefined && 
+            this.dane.dueDate > now ) && [0].indexOf(this.dane.status) >=0
   }
 
-  constructor (){
+  public ngOnInit(){
+    this.dane.dueDate = this.dane.dueDate ? new Date(this.dane.dueDate) : undefined;
+    this.dane.createDate = this.dane.createDate ? new Date(this.dane.createDate) : undefined;
     console.log(this.dane);
-    
   }
+
 }
