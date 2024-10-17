@@ -19,6 +19,7 @@ export class TodoComponent {
     
     servTodo.getData().subscribe( (dane) => {
       this.dane = dane;
+      console.log(dane);
     } )
   }
 }
