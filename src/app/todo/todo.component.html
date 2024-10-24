@@ -1,1 +1,7 @@
-<app-todoitem *ngFor="let item of dane" [dane]="item"></app-todoitem>
+<div 
+cdkDropList
+[cdkDropListData]="dane"
+(cdkDropListDropped)="drop($event)"
+>
+<app-todoitem *ngFor="let item of dane" [dane]="item" cdkDrag></app-todoitem>
+</div>

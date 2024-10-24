@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Todo } from '../todo';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
+import { TodoService } from '../todo.service';
+
 
 @Component({
   selector: 'app-todoitem',
@@ -11,7 +14,10 @@ import { NgClass } from '@angular/common';
 })
 export class TodoitemComponent {
 
-  @Input() dane: Todo = {active:false, description:"", name:"",position:0, priority:0, status:0};
+  constructor (private router: Router, private serwis: TodoService){
+
+  }
+  @Input() dane: Todo = {active:false, id:-1, description:"", name:"",position:0, priority:0, status:0};
   get cdark():boolean {
     return this.dane.active == false;
   }
@@ -19,6 +25,14 @@ export class TodoitemComponent {
     let now = new Date();
     return !this.cdark && (this.dane.dueDate !== undefined && 
             this.dane.dueDate > now ) && [0].indexOf(this.dane.status) >=0
+  }
+  public edit(id: number){
+    this.router.navigate(['/add', id]);
+  }
+
+  public remove(id: number){
+
+    this.serwis.remove(this.serwis.item(id));
   }
 
   public ngOnInit(){

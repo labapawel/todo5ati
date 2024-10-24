@@ -3,17 +3,24 @@ import { TodoService } from '../todo.service';
 import { Todo } from '../todo'
 import { TodoitemComponent } from '../todoitem/todoitem.component';
 import { NgFor } from '@angular/common';
+import { DragDropModule, CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [TodoitemComponent, NgFor],
+  imports: [TodoitemComponent, NgFor, DragDropModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
 
 export class TodoComponent {
   public dane: Array<Todo> = [];
+
+
+  public drop(event:CdkDragDrop<Todo[], any, any>){
+    console.log(event);
+    
+  }
 
   constructor(private servTodo:TodoService){
     

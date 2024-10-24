@@ -1,4 +1,12 @@
 <div [ngClass]="{alert:true, 'alert-primary':cprimary,'alert-success':false,'alert-danger':false,
                 'alert-warning':false,'alert-info':false,'alert-dark':cdark, 'mt-3':true}" role="alert">
-    {{dane.name}}
+                <div class="row">
+                    <div class="col-11">{{dane.name}}</div>
+                    <div class="col-1 d-flex justify-content-end click">
+                        <i class="bi bi-pen" (click)="edit(dane.id)"></i>
+                        <i class="bi bi-trash" (click)="remove(dane.id)"></i>
+                    </div>
+                </div>
+    
+    
 </div>
