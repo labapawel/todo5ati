@@ -5,6 +5,11 @@
                     <div class="col-1 d-flex justify-content-end click">
                         <i class="bi bi-pen" (click)="edit(dane.id)"></i>
                         <i class="bi bi-trash" (click)="remove(dane.id)"></i>
+                        <i class="bi bi-arrow-down-circle" *ngIf="!detale" (click)="detale=true;"></i>
+                        <i class="bi bi-arrow-up-circle"  *ngIf="detale" (click)="detale=false;"></i>
+                    </div>
+                    <div class="col-12" *ngIf="detale">
+                        detale
                     </div>
                 </div>
     

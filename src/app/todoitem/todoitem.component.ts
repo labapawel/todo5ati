@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Todo } from '../todo';
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { TodoService } from '../todo.service';
 
@@ -8,11 +8,13 @@ import { TodoService } from '../todo.service';
 @Component({
   selector: 'app-todoitem',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, NgIf],
   templateUrl: './todoitem.component.html',
   styleUrl: './todoitem.component.scss'
 })
 export class TodoitemComponent {
+
+  public detale: boolean = false;
 
   constructor (private router: Router, private serwis: TodoService){
 
