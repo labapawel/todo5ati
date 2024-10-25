@@ -3,7 +3,7 @@ import { TodoService } from '../todo.service';
 import { Todo } from '../todo'
 import { TodoitemComponent } from '../todoitem/todoitem.component';
 import { NgFor } from '@angular/common';
-import { DragDropModule, CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { DragDropModule, CdkDragDrop} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todo',
@@ -18,17 +18,14 @@ export class TodoComponent {
 
 
   public drop(event:CdkDragDrop<Todo[], any, any>){
-    
-    console.log(event.currentIndex, event.previousIndex);
-    //  (event);
-    
+      this.servTodo.moveData(event.previousIndex, event.currentIndex);    
   }
 
   constructor(private servTodo:TodoService){
     
     servTodo.getData().subscribe( (dane) => {
       this.dane = dane;
-      console.log(dane);
+     // console.log(dane);
     } )
   }
 }

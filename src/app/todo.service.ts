@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Todo } from './todo';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PS } from './ps';
+import { moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,11 @@ export class TodoService {
     localStorage.setItem('dane5ati', JSON.stringify(this.dane));
   }
 
+  public moveData(previousIndex: number, currentIndex: number){
+    moveItemInArray(this.dane, previousIndex, currentIndex);
+    this.save();
+  }
+
   public item(id:number) : Todo {
     let dane = this.dane.filter(e=>e.id==id);
     if(dane.length>0) return dane[0];
@@ -57,6 +63,11 @@ export class TodoService {
       this._obs.next(this.dane);
     }
   }
+
+  public updateData(TodoData : Todo[]){
+      this.dane = TodoData;
+      this.save();
+  } 
 
   public add(data: Todo) : void {
     data.id = ++TodoService.lastID;
