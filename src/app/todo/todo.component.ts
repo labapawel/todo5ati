@@ -19,7 +19,8 @@ export class TodoComponent {
 
   public drop(event:CdkDragDrop<Todo[], any, any>){
     
-    
+    console.log(event.currentIndex, event.previousIndex);
+    //  (event);
     
   }
 
