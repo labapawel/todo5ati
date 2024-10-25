@@ -67,6 +67,7 @@ export class TodoService {
   public remove(data: Todo){
     this.dane = this.dane.filter(e=>e != data);
     this._obs.next(this.dane);
+    this.save();
   }
 
   public refresh(){
