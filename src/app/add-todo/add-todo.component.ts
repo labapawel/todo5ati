@@ -43,7 +43,7 @@ export class AddTodoComponent {
   }
 
   ngOnInit(){
-    let ids = this.route.snapshot.paramMap.get('id');
+    let ids = this.route.snapshot?.paramMap.get('id');
     if (ids!== undefined){
        let id = ids ? parseInt(ids.toString()):-1; 
        this.dane = this.serwis.item(id);
